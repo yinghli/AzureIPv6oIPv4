@@ -1,8 +1,9 @@
 This doc will describe how to setup an IPv6 tunnel over IPv4 on Azure VM network environment. </br>
 We setup two VM on Azure different region. One is at East Asia region, the other is at US West region.</br>
-Those two VM only have IPv4 public IP, we will simulate two IPv6 network on each VM and setup IPv6 over IPv4 VxLAN tunnel to make those IPv6 network reaching to each other.</br>
+Those two VM only have IPv4 public IP, East Asis VM is 168.63.201.67, US West VM is 52.183.45.102.
+we will simulate two IPv6 network on each VM and setup IPv6 over IPv4 VxLAN tunnel to make those IPv6 network reaching to each other.</br>
 
-## Simulate IPv6 interface on each VM. We setup loopback interface and assign IPv6 interface address to each interface. 
+## Simulate IPv6 interface on each VM. We setup loopback interface and assign IPv6 address to each interface. 
 East Asia VM setup
 ```
 ip link add lo1 type dummy
@@ -36,7 +37,7 @@ Result will show as:
 ```
 US West VM setup
 ```
-ip link add vx0 type vxlan id 100 remote 168.63.201.67dev eth0 dstport 4789
+ip link add vx0 type vxlan id 100 remote 168.63.201.67 dev eth0 dstport 4789
 ip link set up dev vx0
 ip addr add 192.168.200.3/24 dev vx0
 ip -6 addr add 2001:db8:1::3/64 dev vx0
