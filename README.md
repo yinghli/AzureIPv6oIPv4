@@ -73,7 +73,7 @@ US West VM setup
 ```
 ip -6 route add 2001:db8:2::/64 dev vx0
 ```
-Reslut will show as:
+Result will show as:
 ```
 ip -6 route
 ::1 dev lo proto kernel metric 256 pref medium
@@ -90,7 +90,7 @@ East Asia VM setup, setup destination IPv6 and link layer address with US West V
 ```
 ip -6 neigh add 2001:db8:3::1 lladdr 5e:5a:9a:30:ab:27 dev vx0
 ```
-Reslut will show as:
+Result will show as:
 ```
 ip -6 neigh show
 2001:db8:3::1 dev vx0 lladdr 5e:5a:9a:30:ab:27 PERMANENT
@@ -100,7 +100,7 @@ US West VM setup,setup destination IPv6 and link layer address with East Asia Vx
 ```
 ip -6 neigh add 2001:db8:2::1 lladdr fa:c2:5f:15:51:0d dev vx0
 ```
-Reslut will show as:
+Result will show as:
 ```
 ip -6 neigh show
 2001:db8:1::2 dev vx0 lladdr fa:c2:5f:15:51:0d STALE
