@@ -24,7 +24,7 @@ ip link set up dev vx0
 ip addr add 192.168.200.2/24 dev vx0
 ip -6 addr add 2001:db8:1::2/64 dev vx0
 ```
-Result will show as:
+Result will show as, East Asia VxLAN interface vx0 have MAC address fa:c2:5f:15:51:0d, this is important for next step.
 ```
 3: vx0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default qlen 1000
     link/ether fa:c2:5f:15:51:0d brd ff:ff:ff:ff:ff:ff
@@ -42,7 +42,7 @@ ip link set up dev vx0
 ip addr add 192.168.200.3/24 dev vx0
 ip -6 addr add 2001:db8:1::3/64 dev vx0
 ```
-Result will show as:
+Result will show as, US West VxLAN interface vx0 have MAC address 5e:5a:9a:30:ab:27, this is important for next step.
 ```
 3: vx0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN group default qlen 1000
     link/ether 5e:5a:9a:30:ab:27 brd ff:ff:ff:ff:ff:ff
@@ -86,7 +86,7 @@ fe80::/64 dev lo1 proto kernel metric 256 pref medium
 ```
 ## Setup IPv6 link level address information
 
-East Asia VM setup
+East Asia VM setup, setup destination IPv6 and link layer address with US West VxLAN interface MAC address.
 ```
 ip -6 neigh add 2001:db8:3::1 lladdr 5e:5a:9a:30:ab:27 dev vx0
 ```
@@ -96,7 +96,7 @@ ip -6 neigh show
 2001:db8:3::1 dev vx0 lladdr 5e:5a:9a:30:ab:27 PERMANENT
 2001:db8:1::3 dev vx0 lladdr 5e:5a:9a:30:ab:27 STALE
 ```
-US West VM setup
+US West VM setup,setup destination IPv6 and link layer address with East Asia VxLAN interface MAC address.
 ```
 ip -6 neigh add 2001:db8:2::1 lladdr fa:c2:5f:15:51:0d dev vx0
 ```
