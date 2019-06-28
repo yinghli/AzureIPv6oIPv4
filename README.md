@@ -117,4 +117,4 @@ PING 2001:db8:3::1(2001:db8:3::1) from 2001:db8:2::1 : 56 data bytes
 64 bytes from 2001:db8:3::1: icmp_seq=5 ttl=64 time=141 ms
 ```
 ## Packet Capture
-
+![](https://github.com/yinghli/AzureIPv6oIPv4/blob/master/vxlan.png)
