@@ -86,7 +86,7 @@ fe80::/64 dev lo1 proto kernel metric 256 pref medium
 ```
 ## Setup IPv6 link level address information
 
-East Asia VM setup, setup destination IPv6 and link layer address with US West VxLAN interface MAC address.
+East Asia VM setup, setup destination IPv6 link layer address with US West VxLAN interface MAC address.
 ```
 ip -6 neigh add 2001:db8:3::1 lladdr 5e:5a:9a:30:ab:27 dev vx0
 ```
@@ -96,7 +96,7 @@ ip -6 neigh show
 2001:db8:3::1 dev vx0 lladdr 5e:5a:9a:30:ab:27 PERMANENT
 2001:db8:1::3 dev vx0 lladdr 5e:5a:9a:30:ab:27 STALE
 ```
-US West VM setup,setup destination IPv6 and link layer address with East Asia VxLAN interface MAC address.
+US West VM setup,setup destination IPv6 link layer address with East Asia VxLAN interface MAC address.
 ```
 ip -6 neigh add 2001:db8:2::1 lladdr fa:c2:5f:15:51:0d dev vx0
 ```
