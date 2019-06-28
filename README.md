@@ -3,22 +3,20 @@ We setup two VM on Azure different region. One is at East Asia region, the other
 Those two VM only have IPv4 public IP, we will simulate two IPv6 network on each VM and setup IPv6 over IPv4 VxLAN tunnel to make those IPv6 network reaching to each other.</br>
 
 ## Simulate IPv6 interface on each VM. We setup loopback interface and assign IPv6 interface address to each interface. 
-East Asia VM
+East Asia VM setup
 ```
 ip link add lo1 type dummy
 ip -6 addr add 2001:db8:2::1/64 dev lo1
 ip link set up dev lo1
 ```
-
-US West VM
+US West VM setup
 ```
 ip link add lo1 type dummy
 ip -6 addr add 2001:db8:3::1/64 dev lo1
 ip link set up dev lo1
 ```
-
 ## Setup VxLAN interface on each VM.
-East Asia VM
+East Asia VM setup
 ```
 ip link add vx0 type vxlan id 100 remote 52.183.45.102 dev eth0 dstport 4789
 ip link set up dev vx0
@@ -36,7 +34,7 @@ Result will show as:
     inet6 fe80::f8c2:5fff:fe15:510d/64 scope link
        valid_lft forever preferred_lft forever
 ```
-US West VM
+US West VM setup
 ```
 ip link add vx0 type vxlan id 100 remote 168.63.201.67dev eth0 dstport 4789
 ip link set up dev vx0
@@ -55,8 +53,7 @@ Result will show as:
        valid_lft forever preferred_lft forever
 ```
 ## Setup IPv6 route on each VM
-
-East Asia VM
+East Asia VM setup
 ```
 ip -6 route add 2001:db8:3::/64 dev vx0
 ```
@@ -71,7 +68,7 @@ fe80::/64 dev eth0 proto kernel metric 256 pref medium
 fe80::/64 dev vx0 proto kernel metric 256 pref medium
 fe80::/64 dev lo1 proto kernel metric 256 pref medium
 ```
-US West VM
+US West VM setup
 ```
 ip -6 route add 2001:db8:2::/64 dev vx0
 ```
@@ -88,11 +85,11 @@ fe80::/64 dev lo1 proto kernel metric 256 pref medium
 ```
 ## Setup IPv6 link level address information
 
-East Asia VM
+East Asia VM setup
 ```
 ip -6 neigh add 2001:db8:3::1 lladdr 5e:5a:9a:30:ab:27 dev vx0
 ```
-US West VM
+US West VM setup
 ```
 ip -6 neigh add 2001:db8:2::1 lladdr fa:c2:5f:15:51:0d dev vx0
 ```
