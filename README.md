@@ -117,4 +117,8 @@ PING 2001:db8:3::1(2001:db8:3::1) from 2001:db8:2::1 : 56 data bytes
 64 bytes from 2001:db8:3::1: icmp_seq=5 ttl=64 time=141 ms
 ```
 ## Packet Capture
+From the packet capture, outer packet header show as source IP is East Asia VM 168.63.201.67, destination IP is translated by Azure from 52.183.45.102 to 10.5.1.4. </br>
+Layer 4 is UDP and destination port is 4789 and show as this is VxLAN packet inside. VNI is 100. </br>
+Inner packet header show as source MAC is fa:c2:5f:15:51:0d, destination MAC is 5e:5a:9a:30:ab:27. Source IPv6 address is 2001:db8:2::1 and destination IPv6 address is 2001:db8:3::1 </br>
+
 ![](https://github.com/yinghli/AzureIPv6oIPv4/blob/master/vxlan.png)
