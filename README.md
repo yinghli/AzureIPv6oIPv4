@@ -106,4 +106,15 @@ ip -6 neigh show
 2001:db8:1::2 dev vx0 lladdr fa:c2:5f:15:51:0d STALE
 2001:db8:2::1 dev vx0 lladdr fa:c2:5f:15:51:0d PERMANENT
 ```
+## Test Result
+```
+ping -6 2001:db8:3::1 -I 2001:db8:2::1
+PING 2001:db8:3::1(2001:db8:3::1) from 2001:db8:2::1 : 56 data bytes
+64 bytes from 2001:db8:3::1: icmp_seq=1 ttl=64 time=141 ms
+64 bytes from 2001:db8:3::1: icmp_seq=2 ttl=64 time=141 ms
+64 bytes from 2001:db8:3::1: icmp_seq=3 ttl=64 time=140 ms
+64 bytes from 2001:db8:3::1: icmp_seq=4 ttl=64 time=140 ms
+64 bytes from 2001:db8:3::1: icmp_seq=5 ttl=64 time=141 ms
+```
+## Packet Capture
 
